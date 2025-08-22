@@ -3,36 +3,34 @@
 
 This repository contains the official implementation of the model described in:
 
-> **[Paper Title]**
-> Authors: [Full names] 
-> Published at: [Conference/Journal Name, Year]
-> DOI / arXiv: [Link]
+> **Application of vision transformers to protein-ligand affinity prediction.**
+> Authors: Poziemski J, Siedlecki P.
+> DOI: 10.26434/chemrxiv-2025-qcxq1
 
 ---
 
-## 🚀 Overview
+## Overview
 
-This model predicts protein-ligand binding affinities using a hybrid graph neural network architecture.
+This model predicts protein-ligand binding affinities using Vision transformer architecture based on 3D Voxels.
 
-If applicable, include a diagram or conceptual figure from the paper.
+
+![Model Architecture](/images/vit_architecture.png)
 
 ---
 
 ## Repository Structure
 
 ```bash
-├── files/                 # Main source code
-│   ├── model.py         # Model architecture
-│   └── utils.py         # Utility functions
-├── sample_data/                # Sample input data or download scripts
-├── utils.py         # Pretrained model weights
-├── featurizer.py           # YAML/JSON config files
-├── train.py     # Python dependencies
-├── grid.py     # Python dependencies
-├── predict.py     # Python dependencies
-├── vit_model.py     # Python dependencies
-├── README.md            # Project readme
-└── VIT_base_model.pth 
+├── files/   # annotation files
+├── sample_data/  
+├── utils.py         
+├── featurizer.py # Script to generate input data         
+├── train.py     # Script to train data 
+├── grid.py     
+├── predict.py     # Script for data prediction
+├── vit_model.py     # Model architecture class
+├── README.md           
+└── VIT_base_model.pth  # Base model used for analysis in main paper
 ```
 
 
@@ -83,7 +81,7 @@ python predict.py --model VIT_base_model.pth  --grid_dir [path to directory with
 
 You can simply evaluate out model on coreset2013 and coreset2016 by:
 ```bash
-python scoring_evaluation.py --model VIT_base_model.pth  --grid_dir [path to directory with perpared grids ]  --coreset_2016  [coreset 2016 annotation file ] --coreset_2013 [coreset 2013 annotation file]
+python scoring_evaluation.py --model VIT_base_model.pth  --grid_dir [path to directory with perpared grids ]  --coreset_2016  [coreset 2016 annotation file] --coreset_2013 [coreset 2013 annotation file]
 ```
 
 ## Citation
