@@ -1,6 +1,6 @@
-# VIT_for_affinity
+# ViT_for_affinity
 
-
+ViT_for_affinity is a vision transformer applied to the problem of predicting affinity of protein-ligand complexes using 3D structures as input data.
 This repository contains the official implementation of the model described in:
 
 > **Application of vision transformers to protein-ligand affinity prediction.**
@@ -11,10 +11,10 @@ This repository contains the official implementation of the model described in:
 
 ## Overview
 
-This model predicts protein-ligand binding affinities using Vision transformer architecture based on 3D Voxels.
+The ViT model predicts protein-ligand binding affinities using Vision transformer architecture based on 3D Voxels.
 
 
-![Model Architecture](/images/vit_architecture.png)
+![Model Architecture](/images/ViT_arch.png)
 
 ---
 
@@ -36,16 +36,14 @@ This model predicts protein-ligand binding affinities using Vision transformer a
 
 ## Requirements
 
-Python 3.9.19
-rdkit 2023.9.6
-torch  2.3.1
-einops  0.8.0
-mdanalysis 2.7.0 
-
-other:
-pandas, 
-BIOpython, 
-dssp package
+- Python 3.9.19
+- rdkit 2023.9.6
+- torch 2.3.1
+- einops 0.8.0
+- mdanalysis 2.7.0
+- pandas 
+- BIOpython 
+- dssp package
 
 
 ## Usage
