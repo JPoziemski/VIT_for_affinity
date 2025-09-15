@@ -3,7 +3,6 @@ import argparse
 import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
-import torch.nn.functional as F
 import torch.optim as optim
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, root_mean_squared_error
@@ -98,10 +97,8 @@ class GridDataset(Dataset):
 
     def add_augmentation(self):
         repeated_data = [self.complex_anno.copy() for _ in range(len(self.augmentation_func))]
-        #print(repeated_data)
         for i, data in enumerate(repeated_data):
             data["augmentation"] = i
-        #print(data)
         df_repeated = pd.concat(repeated_data, ignore_index=True)
         df_repeated = df_repeated.sample(frac=1.0, random_state=42)
         self.complex_anno = df_repeated
@@ -136,7 +133,7 @@ def parse_args():
 
     parser.add_argument("--train_data", type=str, required=True, help="Path to training CSV")
     parser.add_argument("--valid_data", type=str, required=True, help="Path to validation CSV")
-    parser.add_argument("--coreset_2016", type=str, required=True, help="Path to CASF CSV")
+    parser.add_argument("--casf_2016", type=str, required=True, help="Path to CASF CSV")
     parser.add_argument("--coreset_2013", type=str, required=True, help="Path to PDBbind 2013 core csv")
     parser.add_argument("--grid_dir", type=str, required=True, help="Directory containing grid features")
 
@@ -166,7 +163,7 @@ if __name__ == "__main__":
     train_dataloader = DataLoader(training_data, batch_size=args.batch_size, shuffle=True)
 
 
-    CASF_data = GridDataset(args.casf_data, args.grid_dir)
+    CASF_data = GridDataset(args.casf_2016, args.grid_dir)
     CASF_dataloader = DataLoader(CASF_data, batch_size=args.batch_size, shuffle=False)
 
     pdbbind_2013_core = GridDataset(args.core2013_data, args.grid_dir)
@@ -198,11 +195,9 @@ if __name__ == "__main__":
         train_loss = 0.0
         valid_loss = 0.0
         valid_r2 = 0
-        c = 0
 
         model.train()
         for train_data, train_labels in train_dataloader:
-            c+=1
 
             optimizer.zero_grad()
 
