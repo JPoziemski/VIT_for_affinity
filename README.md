@@ -23,14 +23,14 @@ Our results provide a foundation for using ViT in medically relevant problems hi
 ## Repository Structure
 
 ```bash
-├── files/   # annotation files
+├── files/             # Annotation files
 ├── sample_data/  
 ├── utils.py         
-├── featurizer.py # Script to generate input data         
-├── train.py     # Script to train data 
+├── featurizer.py      # Script to generate input data         
+├── train.py           # Script to train data 
 ├── grid.py     
-├── predict.py     # Script for data prediction
-├── vit_model.py     # Model architecture class
+├── predict.py         # Script for data prediction
+├── vit_model.py       # Model architecture class
 ├── README.md           
 └── VIT_base_model.pth  # Base model used for analysis in main paper
 ```
